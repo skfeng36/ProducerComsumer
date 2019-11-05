@@ -14,7 +14,7 @@ mamespace SuperK {
 	    }
 	    virtual ~Task(){
 	    }
-	    virtual void Execute()=0;
+	    virtual void Run()=0;
 	    int32_t GetId(){
 		    return id_;
 	    }

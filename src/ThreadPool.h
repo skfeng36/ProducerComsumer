@@ -17,11 +17,12 @@
 #include "Task.h"
 #include "Mutex.h"
 #include "Semaphore.h"
+#include "Util.h"
 namespace SuperK {
     class ThreadPool {
     public:
 
-	static void *Func(void *);
+	static void *ThreadFunc(void *);
 
 	ThreadPool(int32_t MaxThreadNum, int32_t MaxTaskNum = 1024);
 
@@ -37,8 +38,8 @@ namespace SuperK {
 
 private:
 
-	std::queue<Task *> TaskQueue;
-	std::list<Thread*> thread_pool;
+	std::queue<Task *> tasks_;
+	std::list<Thread*> threads_;
 	int32_t max_task_num_;
 	Semaphore sem_;
 	Mutex mutex_;
