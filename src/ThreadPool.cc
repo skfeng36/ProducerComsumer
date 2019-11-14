@@ -21,7 +21,7 @@ namespace SuperK {
 	    return NULL;
     }
 
-    ThreadPool(int32_t max_task_num, int32_t thread_num){
+    ThreadPool::ThreadPool(int32_t max_task_num, int32_t thread_num){
 	    max_task_num_ = max_task_num;
 	    for(int32_t i = 0; i < thread_num; i++){
 		    Thread *thread = new Thread(ThreadFunc, this);
@@ -31,15 +31,15 @@ namespace SuperK {
 
     ThreadPool::~ThreadPool(){
 	    std::list<Thread*>::iterator it;
-	    for(it = threads.begin(); it != threads.end(); it++){
-		    (*it)->CancelThread();
+	    for(it = threads_.begin(); it != threads_.end(); it++){
+		    (*it)->Cancel();
 		    SAFE_DELETE (*it);
 	    }
-	    threads.clear();
+	    threads_.clear();
     }
 
     void ThreadPool::AddTask(Task *task){
-		mutex_.luck();
+	    mutex_.Lock();
 	    if(tasks_.size() < (uint32_t)max_task_num_){
 		    tasks_.push(task);
 		    if(0 != sem_.SemPost()){
@@ -49,17 +49,17 @@ namespace SuperK {
 	    else{
 		    SAFE_DELETE(task);
 	    }
-	    mutex_.unlock();
+	    mutex_.UnLock();
     }
 
     Task *ThreadPool::RemoveTask(){
-	    if(0 != sem_SemWait()){
+	    if(0 != sem_.SemWait()){
 		    printf("sem wait error\n");
 	    }
-	    mutex_.lock();
+	    mutex_.Lock();
 	    Task *task = tasks_.front();
 	    tasks_.pop();
-	    mutex_unlock();
+	    mutex_.UnLock();
 
 	    return task;
     }

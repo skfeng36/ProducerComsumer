@@ -6,7 +6,7 @@
  */
 #ifndef _TASK_H_
 #define _TASK_H_
-mamespace SuperK {
+namespace SuperK {
     class Task{
     public:
 	    Task(int32_t id){

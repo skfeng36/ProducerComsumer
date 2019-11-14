@@ -20,12 +20,12 @@ namespace SuperK {
 	        sem_destroy(&sem_);
         }
         int32_t SemPost(){
-	        return sem_post(&sem);
+	        return sem_post(&sem_);
         }
 
         int32_t SemWait(){
 	        while(true){
-		    if(sem_wait(&sem) == 0){
+		    if(sem_wait(&sem_) == 0){
 			    return 0;
 		    }else if(errno == EINTR){
 			    continue;
@@ -38,5 +38,5 @@ namespace SuperK {
 	    sem_t sem_;
     };
 };/* Superk*/
-#endif /*_SEMAPHORE_H_
+#endif 
 

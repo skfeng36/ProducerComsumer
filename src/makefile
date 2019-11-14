@@ -15,9 +15,9 @@ LIBS +=
 
 INCLUDEDIRS =  -I./include/ 
 
-SRC = $(wildcard *.cpp) 
-
-OBJS =		$(SRC:.cpp=.o) $(SRC_PB:.cc=.o)
+SRC = $(wildcard *.cc) 
+#$(warning  $(SRC)) 
+OBJS =		$(SRC:.cc=.o)
 LIBS =		-lpthread 
 TARGET =	ProducerConsumer
 

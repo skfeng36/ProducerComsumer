@@ -13,6 +13,7 @@
 #include <queue>
 #include <semaphore.h>
 
+#include <stdint.h>
 #include "Thread.h"
 #include "Task.h"
 #include "Mutex.h"

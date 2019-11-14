@@ -25,7 +25,7 @@ namespace SuperK {
 	        return pthread_mutex_trylock(&mutex_);
         }
 
-        int32_t Unlock(){
+        int32_t UnLock(){
 	        return pthread_mutex_unlock(&mutex_);
         }
     private:
