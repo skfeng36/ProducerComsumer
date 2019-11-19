@@ -18,7 +18,7 @@ mamespace SuperK {
     class Log{
     public:
 	    Log(std::string filename, int32_t level = 8);
-	    ~Log();
+	    virtual ~Log();
 	    bool Init(int32_t flags, mode_t mode);
 	    int32_t Write(char *buf, int32_t len);
 	    int32_t GetLogLevel(){

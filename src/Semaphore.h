@@ -15,15 +15,15 @@ namespace SuperK {
     public:
 	    Semaphore(){
 	        sem_init(&sem_, 0, 0);
-        }
+            }
 	    virtual ~Semaphore(){
 	        sem_destroy(&sem_);
-        }
-        int32_t SemPost(){
+            }
+            int32_t SemPost(){
 	        return sem_post(&sem_);
-        }
+            }
 
-        int32_t SemWait(){
+            int32_t SemWait(){
 	        while(true){
 		    if(sem_wait(&sem_) == 0){
 			    return 0;
@@ -32,8 +32,8 @@ namespace SuperK {
 		    }else{
 			    return -1;
 		    }
-	    }
-    }
+	        }
+           }
     private:
 	    sem_t sem_;
     };

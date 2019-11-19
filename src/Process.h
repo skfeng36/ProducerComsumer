@@ -17,11 +17,12 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
+#include "Config.h"
 namespace SuperK {
 
     class Process{
     public:
-	    Process();
+	    Process(Config * config);
 	    virtual ~Process();
 	    void SetDaemon();
             void RecordPid();
@@ -29,11 +30,12 @@ namespace SuperK {
             void MonitorState();
             void Restart();
             void Stop();
-            virtual void Init(){};
+            virtual void Init();
             void SignalHander();
 
     private:
-	    std::string pid;
+	    std::string pid_;
+            Config * config_;
     };
 };
 

@@ -10,14 +10,29 @@
 
 namespace SuperK {
 
-    Process::Process(){
-        ;
+    Process::Process(Config * config){
+        config_=config;
     }
 
     Process::~Process(){
         ;
     }
+    void Process::Init(){
+        SetDaemon();
+        RecordPid();
+    }
+    void Process::RecordPid(){
+        if(NULL!=config_){
+            std::string pid_path=config_->GetStringValue("pid_path");
+            if(!pid_path.empty()){
 
+            }else{
+
+            }
+            
+        }
+
+    }
     void Process::SetDaemon(){
         int pid = fork();
         if(pid < 0){
@@ -35,6 +50,10 @@ namespace SuperK {
         for(int i=0;i<=/*getdablesize()*/1024;i++){
             close(i);
         }
+        pid_=pid;
+    }
+    void Process::MonitorState(){
+        ;
     }
 
 
