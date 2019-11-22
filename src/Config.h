@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include<stdio.h>
 #include<string.h>
+#include <errno.h>
 #include "common/Str.h"
 
 namespace SuperK {
@@ -25,13 +26,16 @@ namespace SuperK {
     public:
 	    Config(std::string filename="");
 	    virtual ~Config();
+            bool IsLoad();
+            void Init();
 	    std::string GetStringValue(const std::string &key);
             int32_t GetIntValue(const std::string &key);
             void ToString();
 
     private:
 	    std::map<std::string ,std::string> fields_;
-            const std::string filename_;
+            std::string filename_;
+            bool is_load_;
     };
 };
 #endif

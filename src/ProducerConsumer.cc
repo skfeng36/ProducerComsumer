@@ -17,7 +17,7 @@ namespace SuperK {
 	    SAFE_DELETE(context_);
     }
     void ProducerConsumer::Init(){
-	    ;
+	    process_->Init();
     }
 
 };

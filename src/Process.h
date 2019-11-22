@@ -34,7 +34,7 @@ namespace SuperK {
             void SignalHander();
 
     private:
-	    std::string pid_;
+	    int32_t pid_;
             Config * config_;
     };
 };

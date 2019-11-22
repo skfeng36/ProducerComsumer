@@ -29,11 +29,13 @@ TARGET =	ProducerConsumer
 $(TARGET):	$(OBJS)
 
 	$(CXX) $(CCFLAGS) $(LDFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
+	cp $(TARGET) ../bin
 
 all:	$(TARGET) 
 	rm -f $(OBJS)
+	cp $(TARGET) ../bin
 install:
-	
+	cp $(TARGET) ../bin	
 clean:
 	rm -f $(OBJS) $(TARGET)
 
